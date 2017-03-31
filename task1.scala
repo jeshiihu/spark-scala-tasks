@@ -1,9 +1,10 @@
 
-val dataInput = sc.textFile("data_input")
-val lCount = dataInput.count()
-val iCount = lCount.toInt
 
-// obtaining an array[int] from the data
-val arrInput = dataInput.take(iCount)
-val splitInput = arrInput.map(_.split("\t"))
-val intInput = splitInput.map(_.map(_.toInt))
+val lines = sc.textFile("data_input")
+val rightSide = lines.flatMap(line => line.split("\t")).map(word=>(word,1)).reduceByKey(_ + _)
+val collected = rightSide.collect
+val maxKey = collected.maxBy(_._2)
+
+
+
+
