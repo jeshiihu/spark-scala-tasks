@@ -5,6 +5,8 @@ val rightSide = lines.flatMap(line => line.split("\t")).map(word=>(word,1)).redu
 val collected = rightSide.collect
 val maxKey = collected.maxBy(_._2)
 
+var result = maxKey._2
+
 
 
 
